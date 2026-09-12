@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Reisetagebuch & GPX Tracker</title>
+    <meta name="theme-color" content="#2563eb">
+    
+    <style>
+        /* --- LEAFLET CSS (INLINED) --- */
+        .leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:transparent}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile-pane img,.leaflet-container .img-layer img,.leaflet-container .leaflet-tile{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:multiply}.leaflet-tile-container{pointer-events:none}.leaflet-tile-fallback{display:none}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;width:0;height:0;border:2px dashed #38f;background:rgba(255,255,255,0.5)}.leaflet-overlay-pane svg{pointer-events:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-group{width:1px;height:1px;position:absolute}.leaflet-vml-group *{position:absolute;width:1px;height:1px}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity 0.2s linear;-moz-transition:opacity 0.2s linear;transition:opacity 0.2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform 0.25s cubic-bezier(0,0,0.25,1);-moz-transition:-moz-transform 0.25s cubic-bezier(0,0,0.25,1);transition:transform 0.25s cubic-bezier(0,0,0.25,1)}.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-popup-pane,.leaflet-control{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-image-layer,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,.leaflet-container--draggable .leaflet-marker-draggable{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078A8}.leaflet-zoom-box{border:2px solid #38f;background:rgba(255,255,255,0.5)}.leaflet-bar{border-radius:4px;box-shadow:0 1px 5px rgba(0,0,0,0.65)}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:black}.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,0.4);background:#fff;border-radius:5px;padding:6px 10px}.leaflet-control-layers-toggle{width:36px;height:36px;background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px;background:white;box-shadow:0 3px 14px rgba(0,0,0,0.4)}.leaflet-popup-content{margin:13px 19px;line-height:1.4}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;transform:rotate(45deg);background:white;box-shadow:0 3px 14px rgba(0,0,0,0.4)}.leaflet-popup-close-button{position:absolute;top:0;right:0;padding:4px 8px 0 0;border:none;text-align:center;width:18px;height:14px;font:16px/14px Tahoma,Verdana,sans-serif;color:#c3c3c3;text-decoration:none;font-weight:bold;background:transparent}
+
+        /* --- APP STYLES --- */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --primary: #0f172a;
+            --primary-light: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --success: #059669;
+            --danger: #dc2626;
+            --warning: #f59e0b;
+            --radius: 12px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--primary-light);
+            margin: 0; padding: 0; line-height: 1.6;
+        }
+
+        .app-container {
+            max-width: 1200px; margin: 0 auto; padding: 2rem; padding-bottom: 100px;
+        }
+
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .header h1 { font-size: 1.75rem; color: var(--primary); margin: 0 0 0.5rem 0; }
+        .header p { color: var(--text-muted); margin: 0 0 1.5rem 0; font-size: 0.95rem; }
+
+        .nav-bar {
+            background: var(--bg-surface); box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            display: flex; justify-content: space-around; padding: 0.5rem; border-top: 1px solid var(--border);
+        }
+
+        .nav-btn {
+            background: none; border: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; font-weight: 600; 
+            color: var(--text-muted); cursor: pointer; border-radius: 8px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+        }
+        .nav-btn.active { color: var(--accent); background: #eff6ff; }
+        .nav-icon { font-size: 1.2rem; }
+
+        .editor-layout { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; align-items: start; }
+        
+        .history-container {
+            background: var(--bg-surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow-sm);
+        }
+
+        .diary-history { display: flex; flex-direction: column; gap: 0.5rem; max-height: 600px; overflow-y: auto; }
+        .history-card {
+            padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;
+            cursor: pointer; transition: all 0.2s; border-left: 4px solid transparent;
+        }
+        .history-card.active { border-left-color: var(--accent); background-color: #f8fafc; }
+        .history-date { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); }
+        .history-title { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin: 0.25rem 0; }
+        .history-author { font-size: 0.75rem; color: var(--accent); }
+
+        .fab-btn {
+            position: fixed; bottom: 85px; right: 20px; width: 56px; height: 56px;
+            border-radius: 50%; background: var(--accent); color: white; font-size: 24px;
+            border: none; box-shadow: 0 4px 12px rgba(37,99,235,0.4); cursor: pointer;
+            display: flex; align-items: center; justify-content: center; z-index: 1000;
+        }
+        .desktop-new-btn { display: none; width: 100%; margin-bottom: 1rem; }
+
+        .card { background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        label { display: block; font-weight: 600; font-size: 0.85rem; color: var(--primary); margin-bottom: 0.4rem; }
+        input[type="text"], input[type="date"], input[type="number"], textarea, select { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; box-sizing: border-box; font-family: inherit; font-size: 1rem; background-color: #f8fafc; }
+        textarea { min-height: 180px; resize: vertical; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); background-color: #fff; }
+
+        input[type="file"] { display: none; }
+        .file-upload-btn { display: flex; align-items: center; justify-content: center; background-color: #f1f5f9; border: 1px dashed #cbd5e1; padding: 1rem; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.9rem; }
+        .btn { background: var(--accent); color: white; border: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; font-size: 0.95rem; text-align: center; text-decoration: none; display: inline-block; box-sizing: border-box; }
+        .btn-outline { background: transparent; color: var(--primary); border: 1px solid var(--border); }
+        .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); margin-top: 1rem;}
+        .btn-group { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+        .btn-sm { padding: 0.4rem 0.75rem; font-size: 0.8rem; width: auto; }
+        
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.5rem; margin-top: 1rem; }
+        .image-card { position: relative; }
+        .image-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; cursor: pointer; }
+        .image-badge { position: absolute; bottom: 4px; right: 4px; background: rgba(0,0,0,0.6); color: white; padding: 2px 4px; border-radius: 4px; font-size: 0.65rem; }
+        .trip-panel { background: linear-gradient(135deg, #eff6ff, #f8fafc); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; }
+        .trip-panel-row { display: flex; gap: 0.75rem; align-items: flex-end; flex-wrap: wrap; }
+        .trip-panel .form-group { flex: 1; min-width: 190px; margin: 0; }
+        .trip-summary { margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-muted); }
+        .trip-details { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #bfdbfe; }
+        .section-title { font-size: 1rem; color: var(--primary); margin: 1.75rem 0 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+        .form-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .photo-actions { position: absolute; top: 4px; right: 4px; display: flex; gap: 3px; }
+        .photo-actions button { border: 0; border-radius: 4px; background: rgba(15,23,42,.78); color: white; cursor: pointer; width: 24px; height: 24px; padding: 0; }
+        .photo-caption { width: 100%; box-sizing: border-box; margin-top: 4px; padding: 0.35rem; border: 1px solid var(--border); border-radius: 4px; font: inherit; font-size: 0.72rem; }
+        .featured-photo { outline: 3px solid var(--warning); outline-offset: 2px; }
+        .export-card { border: 1px solid #bfdbfe; background: #f8fbff; }
+        .export-card h3 { margin: 0 0 .35rem; color: var(--primary); }
+        .export-card p { margin: 0 0 1rem; color: var(--text-muted); font-size: .9rem; }
+
+        /* Sterne Rating UI */
+        .star-rating { display: flex; gap: 4px; font-size: 1.4rem; cursor: pointer; user-select: none; color: #cbd5e1; }
+        .star-rating .star.active { color: var(--warning); }
+
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+        .stat-card { background: #f1f5f9; padding: 0.85rem; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
+        .stat-value { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-top: 2px; }
+
+        /* Checklisten UI */
+        .checklist-group { margin-bottom: 1rem; }
+        .checklist-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+        .checklist-item input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+        .checklist-item.done span { text-decoration: line-through; color: var(--text-muted); }
+
+        /* Ausgaben UI */
+        .expense-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.9rem; }
+        .expense-table th, .expense-table td { border-bottom: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+        .expense-table th { color: var(--text-muted); font-size: 0.8rem; }
+
+        #map { width: 100%; height: 420px; border-radius: 8px; margin-top: 1rem; border: 1px solid var(--border); z-index: 1; }
+        
+        .poi-item { background: var(--bg-surface); margin-bottom: 1rem; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); display: flex; gap: 1rem; align-items: flex-start; }
+        .poi-img { width: 80px; height: 80px; border-radius: 6px; object-fit: cover; flex-shrink: 0; background: #f1f5f9; }
+        .poi-content { flex: 1; min-width: 0; }
+        .poi-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.25rem; }
+        .poi-content h4 { margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--primary); line-height: 1.3; }
+        .btn-delete-poi { background: transparent; border: none; padding: 0.2rem 0.4rem; color: var(--text-muted); cursor: pointer; border-radius: 4px; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+        .btn-delete-poi:hover { color: var(--danger); background-color: #fee2e2; }
+        .poi-content p { margin: 0 0 0.5rem 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+        .poi-content a { color: var(--accent); text-decoration: none; font-weight: 500; font-size: 0.8rem; }
+        #loadingSpinner { color: var(--accent); font-size: 0.9rem; display: none; margin-top: 1rem; text-align: center; padding: 1rem; background: #eff6ff; border-radius: 8px; border: 1px dashed #bfdbfe; }
+
+        .toggle-switch { display: inline-flex; background: #e2e8f0; border-radius: 20px; padding: 2px; gap: 2px; }
+        .toggle-btn { border: none; background: transparent; padding: 4px 12px; border-radius: 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; color: var(--text-muted); }
+        .toggle-btn.active { background: #fff; color: var(--accent); box-shadow: var(--shadow-sm); }
+
+        @media (max-width: 900px) {
+            .app-container { padding: 1rem; padding-bottom: 80px; }
+            .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 2000; }
+            .header h1 { font-size: 1.5rem; }
+            .editor-layout { grid-template-columns: 1fr; gap: 1rem; }
+            .history-container { padding: 0.75rem; border: none; background: transparent; box-shadow: none; border-bottom: 1px solid var(--border); border-radius: 0; }
+            .history-title-mobile { font-size: 0.85rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+            .diary-history { flex-direction: row; overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; scroll-snap-type: x mandatory; }
+            .history-card { min-width: 140px; scroll-snap-align: start; flex-shrink: 0; }
+            .form-grid, .form-grid.three { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 901px) {
+            .nav-bar { border-radius: var(--radius); margin-bottom: 2rem; position: relative; }
+            .fab-btn { display: none; }
+            .desktop-new-btn { display: block; }
+            .history-title-mobile { display: none; }
+        }
+        
+        #autoSaveStatus { font-size: 0.8rem; color: var(--success); font-weight: 600; float: right; opacity: 0; transition: opacity 0.3s; }
+        #autoSaveStatus.show { opacity: 1; }
+
+        /* Backup-Erinnerung */
+        .backup-reminder { display:flex; justify-content:space-between; align-items:center; gap:1rem; background:#fffbeb; border:1px solid #fde68a; color:#92400e; padding:0.75rem 1rem; border-radius:var(--radius); margin-bottom:1.5rem; font-size:0.85rem; flex-wrap:wrap; }
+        .backup-reminder button { flex-shrink:0; }
+
+        /* Tag-Filter-Chips */
+        .tag-chip { font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:999px; background:#f1f5f9; border:1px solid var(--border); color:var(--text-muted); cursor:pointer; font-weight:600; }
+        .tag-chip.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+
+        /* Live-Tracking */
+        .live-track-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-top: 1rem; }
+        .live-track-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="header">
+            <h1>Reisetagebuch & Pro-Studio</h1>
+            <p>Erfasse Touren, erstelle Fotobücher & behalte den Überblick über Routen und Budget.</p>
+        </div>
+
+        <div id="backupBanner" class="backup-reminder" style="display:none;">
+            <span id="backupBannerText"></span>
+            <button class="btn btn-sm" style="width:auto;" onclick="exportAllEntriesJSON()">💾 Jetzt sichern</button>
+        </div>
+
+        <div class="nav-bar">
+            <button class="nav-btn active" onclick="switchTab('tab-editor', this)">
+                <span class="nav-icon">📝</span> Logbuch
+            </button>
+            <button class="nav-btn" onclick="switchTab('tab-map', this)">
+                <span class="nav-icon">🗺️</span> Karte & Stats
+            </button>
+            <button class="nav-btn" onclick="switchTab('tab-checklist', this)">
+                <span class="nav-icon">🎒</span> Packliste & Budget
+            </button>
+            <button class="nav-btn" onclick="switchTab('tab-data', this)">
+                <span class="nav-icon">⚙️</span> Export & Setup
+            </button>
+        </div>
+
+        <!-- TAB 1: EDITOR -->
+        <div id="tab-editor" class="tab-content active">
+            <div class="editor-layout">
+                <div class="history-container">
+                    <button class="btn desktop-new-btn" onclick="startNewEntry(true)">+ Neuer Bericht</button>
+                    <input type="search" id="entrySearch" placeholder="Etappen durchsuchen …" oninput="renderDiaryHistory()" style="width:100%; box-sizing:border-box; padding:.65rem; border:1px solid var(--border); border-radius:8px; margin-bottom:.75rem; font:inherit;">
+                    <div id="tagFilterChips" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.75rem;"></div>
+                    <div class="history-title-mobile">Vorherige Etappen</div>
+                    <div id="diaryHistoryList" class="diary-history"></div>
+                </div>
+
+                <div class="card">
+                    <span id="autoSaveStatus">✓ Gespeichert</span>
+                    <h2 style="margin-top: 0; font-size: 1.2rem;">Bericht bearbeiten</h2>
+                    
+                    <div class="trip-panel">
+                        <div class="trip-panel-row">
+                            <div class="form-group">
+                                <label for="tripSelect">Aktive Reise</label>
+                                <select id="tripSelect" onchange="selectTrip(this.value)"></select>
+                            </div>
+                            <button type="button" class="btn btn-outline" style="width:auto" onclick="toggleTripDetails()">Reise bearbeiten</button>
+                            <button type="button" class="btn" style="width:auto" onclick="createTrip()">+ Neue Reise</button>
+                        </div>
+                        <div id="tripSummary" class="trip-summary"></div>
+                        <div id="tripDetails" class="trip-details" hidden>
+                            <div class="form-grid">
+                                <div class="form-group"><label>Reisename</label><input type="text" id="tripTitle" placeholder="z. B. Donauradweg"></div>
+                                <div class="form-group"><label>Untertitel</label><input type="text" id="tripSubtitle" placeholder="Von Passau nach Wien"></div>
+                                <div class="form-group"><label>Startdatum</label><input type="date" id="tripStartDate"></div>
+                                <div class="form-group"><label>Enddatum</label><input type="date" id="tripEndDate"></div>
+                                <div class="form-group"><label>Reisende</label><input type="text" id="tripTravelers" placeholder="z. B. Martin & Anna"></div>
+                                <div class="form-group"><label>Verkehrsmittel</label><input type="text" id="tripTransport" placeholder="z. B. Fahrrad"></div>
+                            </div>
+                            <button type="button" class="btn" style="width:auto" onclick="saveTrip()">Reise speichern</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label>Datum</label>
+                            <input type="date" id="diaryDate" onchange="triggerAutoSave()">
+                        </div>
+                        <div>
+                            <label>Autor</label>
+                            <input type="text" id="diaryAuthor" placeholder="Dein Name" oninput="triggerAutoSave()">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Titel der Etappe</label>
+                        <input type="text" id="diaryTitle" placeholder="z.B. Etappe 1: Über die Berge" oninput="triggerAutoSave()">
+                    </div>
+
+                    <h3 class="section-title">Etappeninfos & Bewertung</h3>
+                    <div class="form-grid three">
+                        <div class="form-group"><label>Startort</label><input type="text" id="entryStart" placeholder="Startort" oninput="triggerAutoSave()"></div>
+                        <div class="form-group"><label>Zielort</label><input type="text" id="entryDestination" placeholder="Zielort" oninput="triggerAutoSave()"></div>
+                        <div class="form-group"><label>Übernachtung</label><input type="text" id="entryAccommodation" placeholder="Hotel, Camping …" oninput="triggerAutoSave()"></div>
+                        <div class="form-group"><label>Verkehrsmittel</label><input type="text" id="entryTransport" placeholder="Fahrrad, zu Fuß …" oninput="triggerAutoSave()"></div>
+                        <div class="form-group">
+                            <label>Sterne-Bewertung</label>
+                            <div class="star-rating" id="starRating">
+                                <span class="star" onclick="setRating(1)">★</span>
+                                <span class="star" onclick="setRating(2)">★</span>
+                                <span class="star" onclick="setRating(3)">★</span>
+                                <span class="star" onclick="setRating(4)">★</span>
+                                <span class="star" onclick="setRating(5)">★</span>
+                            </div>
+                        </div>
+                        <div class="form-group"><label>Schlagwörter</label><input type="text" id="entryTags" placeholder="Natur, Regen, Pass" oninput="triggerAutoSave()"></div>
+                    </div>
+
+                    <div class="form-group"><label>Highlights des Tages</label><textarea id="entryHighlights" style="min-height:70px" placeholder="Die schönsten Momente in Kürze …" oninput="triggerAutoSave()"></textarea></div>
+
+                    <!-- Ausgaben Tracker für Etappe -->
+                    <h3 class="section-title">Tagesausgaben (€)</h3>
+                    <div class="form-grid three" style="margin-bottom:0.5rem;">
+                        <input type="text" id="expCategory" placeholder="Kategorie (Essen, Hotel ...)">
+                        <input type="number" id="expAmount" placeholder="Betrag (€)" step="0.50">
+                        <button type="button" class="btn btn-outline" onclick="addExpense()">+ Hinzufügen</button>
+                    </div>
+                    <div id="expenseListContainer"></div>
+
+                    <!-- Wetter Abfrage -->
+                    <h3 class="section-title">Wetter</h3>
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <button type="button" class="btn btn-outline btn-sm" onclick="fetchWeatherData()">⛅ Wetter abfragen</button>
+                            <span id="weatherStatus" style="font-size: 0.8rem; color: var(--text-muted);"></span>
+                        </div>
+                        <div id="weatherDisplay"></div>
+                    </div>
+
+                    <h3 class="section-title">Reisebericht</h3>
+                    <div class="form-group">
+                        <textarea id="diaryText" placeholder="Was habt ihr heute erlebt?" oninput="triggerAutoSave()"></textarea>
+                    </div>
+
+                    <h3 class="section-title">Fotos & Buch-Layout</h3>
+                    <div class="form-group">
+                        <label>Fotobuch Layout für diese Etappe</label>
+                        <select id="entryPhotoLayout" onchange="triggerAutoSave()">
+                            <option value="grid-2">Raster 2-spaltig (Standard)</option>
+                            <option value="hero">1 Großes Titelbild + Text</option>
+                            <option value="panorama">Panorama Kopfbild + Galerie</option>
+                            <option value="gallery">Reine Fotoseite (Magazin)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bilder hochladen (EXIF-GPS wird ausgewertet)</label>
+                        <p style="font-size:.8rem;color:var(--text-muted);margin:.2rem 0 .6rem">★ = Titelbild · Pfeile ändern Reihenfolge · Texte erscheinen im Buch-Export.</p>
+                        <label for="imageUpload" class="file-upload-btn">📸 Fotos auswählen...</label>
+                        <input type="file" id="imageUpload" accept="image/*" multiple onchange="handleImageSelection(event)">
+                        <div class="image-grid" id="imageGrid"></div>
+                    </div>
+
+                    <button class="btn" style="margin-top: 1rem;" onclick="commitToLogbook()">Ins Logbuch speichern</button>
+                    <button class="btn-danger" onclick="deleteCurrentEntry()">Eintrag löschen</button>
+                </div>
+            </div>
+            <button class="fab-btn" onclick="startNewEntry(true)" title="Neuer Eintrag">+</button>
+        </div>
+
+        <!-- TAB 2: KARTE & STATISTIKEN -->
+        <div id="tab-map" class="tab-content">
+            <div class="card">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                    <h2 style="margin: 0; font-size: 1.2rem;">Kartenansicht & Tourenanalyse</h2>
+                    <div class="toggle-switch">
+                        <button class="toggle-btn active" id="btnMapViewSingle" onclick="setMapViewMode('single')">Etappe</button>
+                        <button class="toggle-btn" id="btnMapViewTrip" onclick="setMapViewMode('trip')">Gesamte Reise</button>
+                    </div>
+                </div>
+
+                <div style="margin-top:1rem;">
+                    <label for="gpxUpload" class="file-upload-btn">📍 GPX-Track zur aktuellen Etappe hochladen...</label>
+                    <input type="file" id="gpxUpload" accept=".gpx" multiple onchange="processMultipleGPX(event)">
+                </div>
+
+                <div class="live-track-card">
+                    <div class="live-track-row">
+                        <div>
+                            <strong>📡 Live-Tracking</strong>
+                            <div id="liveTrackStatus" style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">Nicht aktiv.</div>
+                        </div>
+                        <div class="btn-group" style="margin:0;">
+                            <button class="btn btn-sm" id="liveTrackStartBtn" style="width:auto;" onclick="startLiveTracking()">▶️ Aufzeichnung starten</button>
+                            <button class="btn btn-sm btn-outline" id="liveTrackStopBtn" style="width:auto; display:none;" onclick="stopLiveTracking()">⏹️ Stoppen & übernehmen</button>
+                        </div>
+                    </div>
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin:0.5rem 0 0;">Zeichnet deine Position live auf und hängt sie als weitere Route an die aktuelle Etappe an. Benötigt Standortfreigabe & eine sichere Verbindung (HTTPS).</p>
+                </div>
+                
+                <div id="map"></div>
+
+                <!-- Gesamtstatistiken der Reise -->
+                <h3 class="section-title">Erweiterte Statistiken</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="statDistance">0 km</div>
+                        <div class="stat-label">Gesamtdistanz</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statElevation">0 m</div>
+                        <div class="stat-label">Höhenmeter</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statMaxElev">-- m</div>
+                        <div class="stat-label">Höchster Punkt</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statAvgDist">0 km</div>
+                        <div class="stat-label">Ø Tagesdistanz</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statDays">0</div>
+                        <div class="stat-label">Etappen</div>
+                    </div>
+                </div>
+
+                <!-- Höhenprofil -->
+                <div id="elevationCard" style="display:none; margin-top:1.5rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Höhenprofil</h3>
+                    <div style="position: relative; height:200px; width:100%;">
+                        <canvas id="elevationChart"></canvas>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Kultur & Natur am Wegesrand</h3>
+                <div id="loadingSpinner">🔍 Durchsuche Wikipedia entlang der Route...</div>
+                <div id="poiList">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Lade eine Route hoch, um Orte zu scannen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: PACKLISTE & BUDGET -->
+        <div id="tab-checklist" class="tab-content">
+            <div class="card">
+                <h2 style="margin-top: 0; font-size: 1.2rem;">Packliste & Reise-Budget</h2>
+                
+                <h3 class="section-title">Packlisten-Manager</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Wähle eine Vorlage oder füge eigene Ausrüstungsgegenstände hinzu.</p>
+                
+                <div class="btn-group" style="margin-bottom: 1rem;">
+                    <button class="btn btn-outline btn-sm" onclick="loadChecklistPreset('bike')">🚴 Fahrradreise</button>
+                    <button class="btn btn-outline btn-sm" onclick="loadChecklistPreset('hiking')">🥾 Wandern</button>
+                    <button class="btn btn-outline btn-sm" onclick="loadChecklistPreset('camping')">⛺ Camping</button>
+                </div>
+
+                <div style="display:flex; gap:0.5rem; margin-bottom: 1rem;">
+                    <input type="text" id="newChecklistItem" placeholder="Neuer Ausrüstungsgegenstand ...">
+                    <button class="btn" style="width:auto;" onclick="addChecklistItem()">+ Hinzufügen</button>
+                </div>
+
+                <div id="checklistContainer"></div>
+
+                <h3 class="section-title" style="margin-top:2rem;">Reise-Budget Übersicht</h3>
+                <div id="tripBudgetSummary"></div>
+            </div>
+        </div>
+
+        <!-- TAB 4: EXPORT & SETUP -->
+        <div id="tab-data" class="tab-content">
+            <div class="card">
+                <h2 style="margin-top: 0; font-size: 1.2rem;">Einstellungen & Exports</h2>
+                
+                <div class="form-group">
+                    <label>Bilder-Auflösung beim Hochladen</label>
+                    <select id="settingImageRes" onchange="saveSettings()">
+                        <option value="1000">Web / Mobil (max. 1000px - Speicherplatz sparen)</option>
+                        <option value="2400">Fotobuch-Druck (max. 2400px - Gestochen scharf)</option>
+                    </select>
+                </div>
+
+                <div class="card export-card" style="margin-top:1.5rem">
+                    <h3>Druckreifes Fotobuch & Downloads</h3>
+                    <p>Erstelle ein druckfertiges PDF-Fotobuch oder exportiere deine Daten für andere Programme.</p>
+                    <div class="btn-group">
+                        <button class="btn" style="flex:1" onclick="openPrintBook()">🖨️ Druckansicht / PDF Fotobuch</button>
+                        <button class="btn btn-outline" style="flex:1" onclick="exportTripKML()">🌍 KML / Google Earth 3D</button>
+                        <button class="btn btn-outline" style="flex:1" onclick="exportTripCSV()">📊 CSV-Übersicht</button>
+                        <button class="btn btn-outline" style="flex:1" onclick="exportTripGPX()">📍 GPX-Routen</button>
+                        <button class="btn btn-outline" style="flex:1" onclick="exportTripDOCX()" title="Word-kompatible .doc-Datei (HTML-basiert), kein natives .docx-Format">📝 Word-kompatibel (.doc)</button>
+                    </div>
+                </div>
+
+                <h3 class="section-title">Datensicherung (JSON Backup)</h3>
+                <div class="form-group">
+                    <label>Tagebuch-Backup importieren</label>
+                    <label for="diaryImport" class="file-upload-btn">📥 JSON-Datei laden...</label>
+                    <input type="file" id="diaryImport" accept=".json" onchange="importDiaryJSON(event)">
+                </div>
+
+                <div class="form-group" style="margin-top: 1rem;">
+                    <button class="btn btn-outline" onclick="exportAllEntriesJSON()">💾 Komplettes Backup als JSON speichern</button>
+                    <p id="backupStatus" style="font-size:.8rem;color:var(--text-muted);margin:.6rem 0 0"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INLINED LIBRARIES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const RELEVANT_KEYWORDS = ["burg", "schloss", "stadt", "fluss", "see", "natur", "kultur", "museum", "kirche", "kloster", "ruine", "denkmal", "nationalpark", "brücke", "turm", "historisch", "gebirge", "tal", "wald", "architektur", "kapelle", "pass", "gipfel"];
+        const RELEVANT_KEYWORDS_EN = ["castle", "palace", "city", "town", "river", "lake", "nature", "culture", "museum", "church", "cathedral", "monastery", "ruin", "monument", "national park", "bridge", "tower", "historic", "mountain", "valley", "forest", "architecture", "chapel", "pass", "peak", "fortress"];
+
+        /* Native LocalStorage & IndexedDB Storage Engine */
+        function createNativeStorage() {
+            let databasePromise;
+            function getDatabase() {
+                if (!databasePromise) databasePromise = new Promise((resolve, reject) => {
+                    if (!window.indexedDB) return reject(new Error('IndexedDB nicht unterstützt'));
+                    const request = indexedDB.open('localforage', 1);
+                    request.onupgradeneeded = () => {
+                        if (!request.result.objectStoreNames.contains('keyvaluepairs')) request.result.createObjectStore('keyvaluepairs');
+                    };
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
+                return databasePromise;
+            }
+            return {
+                async getItem(key) {
+                    try {
+                        const db = await getDatabase();
+                        return await new Promise((resolve, reject) => { const req = db.transaction('keyvaluepairs', 'readonly').objectStore('keyvaluepairs').get(key); req.onsuccess = () => resolve(req.result ?? null); req.onerror = () => reject(req.error); });
+                    } catch (error) {
+                        const raw = localStorage.getItem(`reisetagebuch-${key}`); return raw ? JSON.parse(raw) : null;
+                    }
+                },
+                async setItem(key, value) {
+                    try {
+                        const db = await getDatabase();
+                        return await new Promise((resolve, reject) => { const req = db.transaction('keyvaluepairs', 'readwrite').objectStore('keyvaluepairs').put(value, key); req.onsuccess = () => resolve(value); req.onerror = () => reject(req.error); });
+                    } catch (error) {
+                        localStorage.setItem(`reisetagebuch-${key}`, JSON.stringify(value)); return value;
+                    }
+                },
+                async removeItem(key) {
+                    try {
+                        const db = await getDatabase();
+                        return await new Promise((resolve, reject) => { const req = db.transaction('keyvaluepairs', 'readwrite').objectStore('keyvaluepairs').delete(key); req.onsuccess = () => resolve(true); req.onerror = () => reject(req.error); });
+                    } catch (error) {
+                        localStorage.removeItem(`reisetagebuch-${key}`); return true;
+                    }
+                }
+            };
+        }
+        
+        const nativeStore = createNativeStorage();
+        const diaryStore = {
+            async getItem(key) {
+                if (window.localforage) try { return await window.localforage.getItem(key); } catch (e) {}
+                return nativeStore.getItem(key);
+            },
+            async setItem(key, value) {
+                if (window.localforage) try { return await window.localforage.setItem(key, value); } catch (e) {}
+                return nativeStore.setItem(key, value);
+            },
+            async removeItem(key) {
+                if (window.localforage) try { return await window.localforage.removeItem(key); } catch (e) {}
+                return nativeStore.removeItem(key);
+            }
+        };
+
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+            
+            if(tabId === 'tab-map') { 
+                setTimeout(() => { 
+                    if (mapAvailable && map) map.invalidateSize(); 
+                    renderMapData();
+                }, 100); 
+            } else if (tabId === 'tab-checklist') {
+                renderChecklist();
+                renderTripBudgetSummary();
+            }
+        }
+
+        let trips = [];
+        let activeTripId = null;
+        let mapViewMode = 'single'; // 'single' oder 'trip'
+        let map, trackLayerGroup, photoLayerGroup;
+        let elevationChart = null;
+        let mapAvailable = false;
+        let appSettings = { maxPhotoWidth: 1000 };
+        let activeTagFilter = null;
+        const imageSrcCache = new Map();
+        let liveTrackWatchId = null;
+        let liveTrackPoints = [];
+        let liveTrackStartTime = null;
+        let liveTrackTimer = null;
+
+        function createEmptyEntry() {
+            return { 
+                id: `entry-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, 
+                tripId: typeof activeTripId !== 'undefined' ? activeTripId : null, 
+                date: new Date().toISOString().split('T')[0], 
+                username: "", 
+                title: "", 
+                text: "", 
+                start: "", 
+                destination: "", 
+                accommodation: "", 
+                transport: "", 
+                rating: 0, 
+                tags: [], 
+                highlights: "", 
+                stats: { distance: 0, elevation: 0, maxEle: 0 }, 
+                images: [], 
+                pois: [], 
+                tracks: [], 
+                elevationProfile: [], 
+                weather: null,
+                expenses: [],
+                photoLayout: "grid-2"
+            };
+        }
+
+        let currentEntryData = createEmptyEntry();
+
+        function escapeHTML(value) {
+            const div = document.createElement('div'); div.textContent = value ?? ''; return div.innerHTML;
+        }
+
+        /* --- BILD-SPEICHER (eigener Key pro Bild, statt eingebettet im Eintrag) ---
+           Grund: Früher wurde bei jedem Speichern eines Eintrags die komplette
+           Etappen-Liste inkl. aller Base64-Fotos neu geschrieben. Das wird bei
+           vielen Etappen/Fotos langsam. Jetzt liegt jedes Foto unter einem
+           eigenen Key, der Eintrag speichert nur eine Bild-ID (Referenz). */
+        function imageStoreKey(id) { return `img_${id}`; }
+
+        async function persistImageData(dataUrl) {
+            const id = `img-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+            await diaryStore.setItem(imageStoreKey(id), dataUrl);
+            imageSrcCache.set(id, dataUrl);
+            return id;
+        }
+
+        async function resolveImageSrc(img) {
+            if (!img) return '';
+            if (img.dataUrl) return img.dataUrl; // Altformat aus älteren Einträgen/Backups
+            if (!img.id) return '';
+            if (imageSrcCache.has(img.id)) return imageSrcCache.get(img.id);
+            const data = await diaryStore.getItem(imageStoreKey(img.id));
+            if (data) imageSrcCache.set(img.id, data);
+            return data || '';
+        }
+
+        async function loadSettings() {
+            const stored = await diaryStore.getItem('travelDiary_Settings');
+            if (stored) appSettings = stored;
+            document.getElementById('settingImageRes').value = appSettings.maxPhotoWidth || 1000;
+        }
+
+        async function saveSettings() {
+            appSettings.maxPhotoWidth = parseInt(document.getElementById('settingImageRes').value) || 1000;
+            await diaryStore.setItem('travelDiary_Settings', appSettings);
+        }
+
+        async function initializeTrips() {
+            let entries = await diaryStore.getItem('travelDiary_Pro') || [];
+            trips = await diaryStore.getItem('travelDiary_Trips') || [];
+            if (trips.length === 0 && entries.length > 0) {
+                const legacyTrip = { id: 'trip-legacy', title: 'Bisherige Einträge', subtitle: 'Übernommen aus bestehender Sammlung', startDate: '', endDate: '', travelers: '', transport: '', createdAt: new Date().toISOString() };
+                trips = [legacyTrip];
+                entries = entries.map(entry => ({ ...entry, tripId: entry.tripId || legacyTrip.id, tags: Array.isArray(entry.tags) ? entry.tags : [], highlights: entry.highlights || '', expenses: entry.expenses || [] }));
+                await diaryStore.setItem('travelDiary_Trips', trips);
+                await diaryStore.setItem('travelDiary_Pro', entries);
+            }
+            if (trips.length === 0) {
+                const firstTrip = { id: `trip-${Date.now()}`, title: 'Meine erste Reise', subtitle: '', startDate: '', endDate: '', travelers: '', transport: '', createdAt: new Date().toISOString() };
+                trips = [firstTrip]; await diaryStore.setItem('travelDiary_Trips', trips);
+            }
+            const storedTripId = await diaryStore.getItem('travelDiary_ActiveTrip');
+            activeTripId = trips.some(trip => trip.id === storedTripId) ? storedTripId : trips[0].id;
+            await diaryStore.setItem('travelDiary_ActiveTrip', activeTripId);
+        }
+
+        async function renderTripUI() {
+            const select = document.getElementById('tripSelect'); if (!select) return;
+            select.innerHTML = trips.map(trip => `<option value="${escapeHTML(trip.id)}">${escapeHTML(trip.title)}</option>`).join('');
+            select.value = activeTripId;
+            const trip = trips.find(item => item.id === activeTripId);
+            const entries = (await diaryStore.getItem('travelDiary_Pro') || []).filter(entry => entry.tripId === activeTripId);
+            const distance = entries.reduce((sum, entry) => sum + Number(entry.stats?.distance || 0), 0);
+            document.getElementById('tripSummary').textContent = `${entries.length} Etappe${entries.length === 1 ? '' : 'n'} · ${distance.toFixed(1)} km Gesamt${trip?.transport ? ` · ${trip.transport}` : ''}`;
+            if (!trip) return;
+            document.getElementById('tripTitle').value = trip.title || '';
+            document.getElementById('tripSubtitle').value = trip.subtitle || '';
+            document.getElementById('tripStartDate').value = trip.startDate || '';
+            document.getElementById('tripEndDate').value = trip.endDate || '';
+            document.getElementById('tripTravelers').value = trip.travelers || '';
+            document.getElementById('tripTransport').value = trip.transport || '';
+        }
+
+        function toggleTripDetails() { document.getElementById('tripDetails').hidden = !document.getElementById('tripDetails').hidden; }
+        
+        async function createTrip() {
+            try {
+                const trip = { 
+                    id: `trip-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, 
+                    title: 'Neue Reise', 
+                    subtitle: '', 
+                    startDate: '', 
+                    endDate: '', 
+                    travelers: '', 
+                    transport: '', 
+                    createdAt: new Date().toISOString() 
+                };
+                trips.push(trip); 
+                activeTripId = trip.id;
+                
+                await diaryStore.setItem('travelDiary_Trips', trips); 
+                await diaryStore.setItem('travelDiary_ActiveTrip', activeTripId);
+                await startNewEntry(); 
+                await renderTripUI(); 
+                await renderDiaryHistory(); 
+                
+                const details = document.getElementById('tripDetails');
+                if (details) { details.hidden = false; document.getElementById('tripTitle').focus(); }
+            } catch (err) { console.error("Fehler beim Erstellen einer neuen Reise:", err); }
+        }
+
+        async function saveTrip() {
+            try {
+                const trip = trips.find(item => item.id === activeTripId); 
+                if (!trip) return alert('Keine aktive Reise gefunden.');
+                const title = document.getElementById('tripTitle').value.trim(); 
+                if (!title) return alert('Bitte gib der Reise einen Namen.'); 
+
+                Object.assign(trip, { 
+                    title, 
+                    subtitle: document.getElementById('tripSubtitle').value.trim(), 
+                    startDate: document.getElementById('tripStartDate').value, 
+                    endDate: document.getElementById('tripEndDate').value, 
+                    travelers: document.getElementById('tripTravelers').value.trim(), 
+                    transport: document.getElementById('tripTransport').value.trim() 
+                });
+
+                await diaryStore.setItem('travelDiary_Trips', trips); 
+                await renderTripUI(); await renderDiaryHistory();
+                document.getElementById('tripDetails').hidden = true;
+                alert('Reise erfolgreich gespeichert!');
+            } catch (err) { alert('Fehler beim Speichern der Reise.'); }
+        }
+
+        async function selectTrip(tripId) {
+            activeTripId = tripId; await diaryStore.setItem('travelDiary_ActiveTrip', activeTripId);
+            activeTagFilter = null;
+            await startNewEntry(); await renderTripUI(); await renderDiaryHistory();
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            initMap();
+            await loadSettings();
+            try {
+                await initializeTrips();
+                const savedDraft = await diaryStore.getItem('travelDiary_CurrentDraft');
+                if (savedDraft) {
+                    currentEntryData = savedDraft; 
+                    if (!currentEntryData.tripId) currentEntryData.tripId = activeTripId;
+                    if (trips.some(trip => trip.id === currentEntryData.tripId)) activeTripId = currentEntryData.tripId;
+                    await populateFormFromData(currentEntryData);
+                } else { 
+                    currentEntryData = createEmptyEntry(); 
+                    await populateFormFromData(currentEntryData); 
+                }
+            } catch(e) { 
+                currentEntryData = createEmptyEntry(); 
+                await populateFormFromData(currentEntryData); 
+            }
+            await renderTripUI(); await renderDiaryHistory(); updateBackupStatus();
+        });
+
+        function initMap() {
+            if (!window.L) {
+                document.getElementById('map').innerHTML = '<p style="padding:1rem;color:#64748b">Kartenansicht offline.</p>';
+                return;
+            }
+            try {
+                const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' });
+                map = L.map('map', { center: [48.1371, 11.5754], zoom: 10, layers: [osm] });
+                trackLayerGroup = L.layerGroup().addTo(map);
+                photoLayerGroup = L.layerGroup().addTo(map);
+                mapAvailable = true;
+            } catch (e) { console.warn('Map initialization skipped:', e); }
+        }
+
+        function setRating(rating) {
+            currentEntryData.rating = rating;
+            const stars = document.querySelectorAll('#starRating .star');
+            stars.forEach((star, index) => {
+                if (index < rating) star.classList.add('active');
+                else star.classList.remove('active');
+            });
+            triggerAutoSave();
+        }
+
+        async function populateFormFromData(data) {
+            document.getElementById('diaryDate').value = data.date || new Date().toISOString().split('T')[0];
+            document.getElementById('diaryAuthor').value = data.username || "";
+            document.getElementById('diaryTitle').value = data.title || "";
+            document.getElementById('diaryText').value = data.text || "";
+            document.getElementById('entryStart').value = data.start || '';
+            document.getElementById('entryDestination').value = data.destination || '';
+            document.getElementById('entryAccommodation').value = data.accommodation || '';
+            document.getElementById('entryTransport').value = data.transport || '';
+            document.getElementById('entryTags').value = Array.isArray(data.tags) ? data.tags.join(', ') : (data.tags || '');
+            document.getElementById('entryHighlights').value = data.highlights || '';
+            document.getElementById('entryPhotoLayout').value = data.photoLayout || 'grid-2';
+            
+            setRating(data.rating || 0);
+            await renderImagesUI();
+            renderPOIs();
+            renderWeatherUI();
+            renderExpenses();
+            renderMapData();
+        }
+
+        function syncInputsToData() {
+            currentEntryData.date = document.getElementById('diaryDate').value;
+            currentEntryData.username = document.getElementById('diaryAuthor').value;
+            currentEntryData.title = document.getElementById('diaryTitle').value;
+            currentEntryData.text = document.getElementById('diaryText').value;
+            currentEntryData.tripId = activeTripId;
+            currentEntryData.start = document.getElementById('entryStart').value.trim();
+            currentEntryData.destination = document.getElementById('entryDestination').value.trim();
+            currentEntryData.accommodation = document.getElementById('entryAccommodation').value.trim();
+            currentEntryData.transport = document.getElementById('entryTransport').value.trim();
+            currentEntryData.tags = document.getElementById('entryTags').value.split(',').map(tag => tag.trim()).filter(Boolean);
+            currentEntryData.highlights = document.getElementById('entryHighlights').value.trim();
+            currentEntryData.photoLayout = document.getElementById('entryPhotoLayout').value;
+        }
+
+        let autoSaveTimer;
+        async function triggerAutoSave() {
+            syncInputsToData();
+            try {
+                await diaryStore.setItem('travelDiary_CurrentDraft', currentEntryData);
+            } catch (err) {
+                const status = document.getElementById('autoSaveStatus'); status.textContent = '⚠ Speicherung fehlgeschlagen'; status.style.color = 'var(--danger)'; status.classList.add('show');
+                return;
+            }
+            const status = document.getElementById('autoSaveStatus');
+            status.textContent = '✓ Gespeichert'; status.style.color = 'var(--success)';
+            status.classList.add('show');
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => { status.classList.remove('show'); }, 2000);
+        }
+
+        async function startNewEntry(ask = false) {
+            if (ask && !confirm("Neuen Bericht starten? Ungespeicherte Änderungen gehen verloren.")) return;
+            const lastAuthor = document.getElementById('diaryAuthor').value; 
+            currentEntryData = createEmptyEntry();
+            currentEntryData.username = lastAuthor; 
+            await diaryStore.setItem('travelDiary_CurrentDraft', currentEntryData);
+            await populateFormFromData(currentEntryData);
+            await renderDiaryHistory();
+            switchTab('tab-editor', document.querySelectorAll('.nav-btn')[0]);
+        }
+
+        async function commitToLogbook() {
+            await triggerAutoSave();
+            if (!currentEntryData.title && !currentEntryData.text) { alert("Bitte Titel oder Text eingeben."); return; }
+            currentEntryData.updatedAt = new Date().toISOString();
+            try {
+                let entries = await diaryStore.getItem('travelDiary_Pro') || [];
+                const existingIndex = entries.findIndex(e => e.id === currentEntryData.id);
+                if (existingIndex >= 0) entries[existingIndex] = currentEntryData;
+                else entries.push(currentEntryData);
+                
+                entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+                await diaryStore.setItem('travelDiary_Pro', entries);
+                await renderDiaryHistory(); await renderTripUI();
+                updateBackupBanner();
+                alert("Erfolgreich ins Logbuch gespeichert!");
+            } catch (err) { alert("Speichern fehlgeschlagen. Speicherplatz erschöpft?"); }
+        }
+
+        async function deleteCurrentEntry() {
+            let entries = await diaryStore.getItem('travelDiary_Pro') || [];
+            if (entries.some(e => e.id === currentEntryData.id)) {
+                if (!confirm("Eintrag wirklich löschen?")) return;
+                const toDelete = entries.find(e => e.id === currentEntryData.id);
+                entries = entries.filter(e => e.id !== currentEntryData.id);
+                await diaryStore.setItem('travelDiary_Pro', entries);
+                if (toDelete && toDelete.images) {
+                    for (const img of toDelete.images) {
+                        if (img.id) { try { await diaryStore.removeItem(imageStoreKey(img.id)); imageSrcCache.delete(img.id); } catch(e) {} }
+                    }
+                }
+            }
+            await startNewEntry();
+            await renderDiaryHistory();
+        }
+
+        async function renderDiaryHistory() {
+            const container = document.getElementById('diaryHistoryList');
+            const allTripEntries = (await diaryStore.getItem('travelDiary_Pro') || []).filter(entry => entry.tripId === activeTripId);
+            renderTagFilterChips(allTripEntries);
+
+            const search = (document.getElementById('entrySearch')?.value || '').trim().toLocaleLowerCase('de-DE');
+            const entries = allTripEntries.filter(entry => {
+                if (activeTagFilter && !(entry.tags || []).includes(activeTagFilter)) return false;
+                if (!search) return true;
+                return [entry.title, entry.text, entry.start, entry.destination, entry.tags?.join(' ')].join(' ').toLocaleLowerCase('de-DE').includes(search);
+            });
+            if (entries.length === 0) { 
+                container.innerHTML = '<div style="font-size:0.85rem; color:#64748b; padding:1rem;">Keine Etappen gefunden.</div>'; 
+                return; 
+            }
+            container.innerHTML = '';
+            entries.forEach(entry => {
+                const card = document.createElement('div');
+                card.className = entry.id === currentEntryData.id ? 'history-card active' : 'history-card';
+                const dateStr = new Date(entry.date).toLocaleDateString('de-DE', { month: 'short', day: 'numeric' });
+                const stars = entry.rating ? ' ★'.repeat(entry.rating) : '';
+                card.innerHTML = `<div class="history-date">${dateStr}${stars}</div><div class="history-title">${escapeHTML(entry.title || 'Ohne Titel')}</div><div class="history-author">${entry.username ? '✍️ ' + escapeHTML(entry.username) : ''}</div>`;
+                card.onclick = async () => { await loadEntryIntoEditor(entry); };
+                container.appendChild(card);
+            });
+        }
+
+        /* Klickbare Tag-Wolke über der Etappen-Suche, zum schnellen Filtern (z.B. alle "Regen"-Tage) */
+        function renderTagFilterChips(tripEntries) {
+            const container = document.getElementById('tagFilterChips');
+            if (!container) return;
+            const tagSet = new Set();
+            tripEntries.forEach(e => (e.tags || []).forEach(t => t && tagSet.add(t)));
+            container.innerHTML = '';
+            if (activeTagFilter && !tagSet.has(activeTagFilter)) activeTagFilter = null;
+            if (tagSet.size === 0) return;
+            Array.from(tagSet).sort((a, b) => a.localeCompare(b, 'de')).forEach(tag => {
+                const chip = document.createElement('span');
+                chip.className = 'tag-chip' + (tag === activeTagFilter ? ' active' : '');
+                chip.textContent = tag;
+                chip.onclick = () => toggleTagFilter(tag);
+                container.appendChild(chip);
+            });
+        }
+
+        function toggleTagFilter(tag) {
+            activeTagFilter = (activeTagFilter === tag) ? null : tag;
+            renderDiaryHistory();
+        }
+
+        /* Lädt einen bestehenden Eintrag in den Editor - genutzt von der Verlaufsliste
+           und vom Klick auf eine Route in der "Gesamte Reise"-Kartenansicht. */
+        async function loadEntryIntoEditor(entry) {
+            currentEntryData = JSON.parse(JSON.stringify(entry));
+            activeTripId = currentEntryData.tripId;
+            await diaryStore.setItem('travelDiary_ActiveTrip', activeTripId);
+            await diaryStore.setItem('travelDiary_CurrentDraft', currentEntryData);
+            await populateFormFromData(currentEntryData);
+            await renderTripUI(); await renderDiaryHistory();
+        }
+
+        async function openEntryFromMap(entryId) {
+            const entries = await diaryStore.getItem('travelDiary_Pro') || [];
+            const entry = entries.find(e => e.id === entryId);
+            if (!entry) return;
+            await loadEntryIntoEditor(entry);
+            switchTab('tab-editor', document.querySelectorAll('.nav-btn')[0]);
+        }
+
+        /* --- MAP & STATISTIKEN ENGINE --- */
+        function setMapViewMode(mode) {
+            mapViewMode = mode;
+            document.getElementById('btnMapViewSingle').classList.toggle('active', mode === 'single');
+            document.getElementById('btnMapViewTrip').classList.toggle('active', mode === 'trip');
+            renderMapData();
+        }
+
+        /* Live-Tracking: zeichnet die Position per Geolocation-API auf und hängt
+           das Ergebnis beim Stoppen als zusätzlichen Track an die aktuelle Etappe an. */
+        function startLiveTracking() {
+            if (!navigator.geolocation) { alert('Geolocation wird von diesem Browser nicht unterstützt.'); return; }
+            liveTrackPoints = [];
+            liveTrackStartTime = Date.now();
+            document.getElementById('liveTrackStartBtn').style.display = 'none';
+            document.getElementById('liveTrackStopBtn').style.display = 'inline-block';
+            updateLiveTrackStatus();
+            liveTrackTimer = setInterval(updateLiveTrackStatus, 1000);
+
+            liveTrackWatchId = navigator.geolocation.watchPosition(
+                (pos) => {
+                    const { latitude, longitude, altitude } = pos.coords;
+                    liveTrackPoints.push([latitude, longitude, (altitude !== null && altitude !== undefined) ? altitude : null]);
+                    updateLiveTrackStatus();
+                },
+                (err) => {
+                    const statusEl = document.getElementById('liveTrackStatus');
+                    if (statusEl) statusEl.textContent = `⚠️ Standortfehler: ${err.message}`;
+                },
+                { enableHighAccuracy: true, maximumAge: 5000, timeout: 20000 }
+            );
+        }
+
+        function updateLiveTrackStatus() {
+            const statusEl = document.getElementById('liveTrackStatus');
+            if (!statusEl) return;
+            let dist = 0;
+            for (let i = 1; i < liveTrackPoints.length; i++) {
+                dist += haversine(liveTrackPoints[i-1][0], liveTrackPoints[i-1][1], liveTrackPoints[i][0], liveTrackPoints[i][1]);
+            }
+            const elapsedMin = liveTrackStartTime ? Math.floor((Date.now() - liveTrackStartTime) / 60000) : 0;
+            statusEl.textContent = `🔴 Aufzeichnung läuft · ${dist.toFixed(2)} km · ${elapsedMin} min · ${liveTrackPoints.length} Punkte`;
+        }
+
+        async function stopLiveTracking() {
+            if (liveTrackWatchId !== null) { navigator.geolocation.clearWatch(liveTrackWatchId); liveTrackWatchId = null; }
+            if (liveTrackTimer) { clearInterval(liveTrackTimer); liveTrackTimer = null; }
+            document.getElementById('liveTrackStartBtn').style.display = 'inline-block';
+            document.getElementById('liveTrackStopBtn').style.display = 'none';
+
+            if (liveTrackPoints.length < 2) {
+                document.getElementById('liveTrackStatus').textContent = 'Aufzeichnung zu kurz, nicht übernommen.';
+                liveTrackPoints = [];
+                return;
+            }
+
+            let distance = 0, elevationGain = 0, maxEle = 0, profile = [];
+            let prevEle = null;
+            for (let i = 0; i < liveTrackPoints.length; i++) {
+                const [lat, lon, ele] = liveTrackPoints[i];
+                if (i > 0) distance += haversine(liveTrackPoints[i-1][0], liveTrackPoints[i-1][1], lat, lon);
+                if (ele !== null && ele > maxEle) maxEle = ele;
+                if (prevEle !== null && ele !== null && ele > prevEle) elevationGain += (ele - prevEle);
+                if (ele !== null && (i % 5 === 0 || i === liveTrackPoints.length - 1)) profile.push({ dist: parseFloat(distance.toFixed(1)), ele: Math.round(ele) });
+                prevEle = ele;
+            }
+
+            if (!currentEntryData.tracks) currentEntryData.tracks = [];
+            currentEntryData.tracks.push(liveTrackPoints);
+            currentEntryData.stats = {
+                distance: parseFloat((Number(currentEntryData.stats?.distance || 0) + distance).toFixed(1)),
+                elevation: Math.round(Number(currentEntryData.stats?.elevation || 0) + elevationGain),
+                maxEle: Math.max(Number(currentEntryData.stats?.maxEle || 0), Math.round(maxEle))
+            };
+            currentEntryData.elevationProfile = (currentEntryData.elevationProfile || []).concat(profile);
+
+            document.getElementById('liveTrackStatus').textContent = `✅ ${distance.toFixed(2)} km aufgezeichnet und zur Etappe hinzugefügt.`;
+            liveTrackPoints = [];
+            renderElevationChart(currentEntryData.elevationProfile);
+            renderMapData();
+            await triggerAutoSave();
+        }
+
+        window.addEventListener('beforeunload', () => {
+            if (liveTrackWatchId !== null) navigator.geolocation.clearWatch(liveTrackWatchId);
+        });
+
+        async function renderMapData() {
+            if (!mapAvailable) return;
+            trackLayerGroup.clearLayers();
+            photoLayerGroup.clearLayers();
+
+            let bounds = L.latLngBounds([]);
+            let entriesToDisplay = [];
+            
+            if (mapViewMode === 'single') {
+                entriesToDisplay = [currentEntryData];
+            } else {
+                entriesToDisplay = (await diaryStore.getItem('travelDiary_Pro') || []).filter(e => e.tripId === activeTripId);
+            }
+
+            const colors = ['#2563eb', '#059669', '#d97706', '#dc2626', '#7c3aed', '#db2777'];
+
+            for (let idx = 0; idx < entriesToDisplay.length; idx++) {
+                const entry = entriesToDisplay[idx];
+                const color = colors[idx % colors.length];
+                if (entry.tracks && entry.tracks.length > 0) {
+                    entry.tracks.forEach(track => {
+                        const polyline = L.polyline(track, { color: color, weight: 4 }).addTo(trackLayerGroup);
+                        track.forEach(pt => bounds.extend([pt[0], pt[1]]));
+                        // In der Gesamt-Reise-Ansicht: Klick auf eine Route springt zur zugehörigen Etappe
+                        if (mapViewMode === 'trip' && entry.id) {
+                            polyline.on('click', () => openEntryFromMap(entry.id));
+                            polyline.bindTooltip(escapeHTML(entry.title || 'Etappe ansehen'), { sticky: true });
+                            polyline.on('mouseover', () => polyline.setStyle({ weight: 7 }));
+                            polyline.on('mouseout', () => polyline.setStyle({ weight: 4 }));
+                        }
+                    });
+                }
+
+                if (entry.images) {
+                    for (const img of entry.images) {
+                        if (img.lat && img.lng) {
+                            const src = await resolveImageSrc(img);
+                            const icon = L.divIcon({
+                                className: 'custom-photo-pin',
+                                html: `<div style="background:${color}; color:white; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.3); font-size:14px; border: 2px solid white;">📷</div>`,
+                                iconSize: [28, 28], iconAnchor: [14, 14]
+                            });
+                            const marker = L.marker([img.lat, img.lng], { icon: icon });
+                            marker.bindPopup(`<img src="${src}" style="width:150px; border-radius:6px; margin-bottom:4px;"><br><strong>${escapeHTML(entry.title || '')}</strong><br><small>${escapeHTML(img.caption || img.filename || 'Foto')}</small>`);
+                            photoLayerGroup.addLayer(marker);
+                            bounds.extend([img.lat, img.lng]);
+                        }
+                    }
+                }
+            }
+
+            if (bounds.isValid()) map.fitBounds(bounds, { padding: [25, 25] });
+
+            // Stats Berechnen
+            await calculateTripStats(entriesToDisplay);
+        }
+
+        async function calculateTripStats(entries) {
+            let totalDist = 0;
+            let totalEle = 0;
+            let maxEle = 0;
+            
+            entries.forEach(e => {
+                totalDist += Number(e.stats?.distance || 0);
+                totalEle += Number(e.stats?.elevation || 0);
+                if (e.stats?.maxEle && e.stats.maxEle > maxEle) maxEle = e.stats.maxEle;
+                if (e.elevationProfile) {
+                    e.elevationProfile.forEach(p => { if (p.ele > maxEle) maxEle = p.ele; });
+                }
+            });
+
+            document.getElementById('statDistance').textContent = `${totalDist.toFixed(1)} km`;
+            document.getElementById('statElevation').textContent = `${Math.round(totalEle)} m`;
+            document.getElementById('statMaxElev').textContent = maxEle ? `${Math.round(maxEle)} m` : '-- m';
+            document.getElementById('statAvgDist').textContent = entries.length ? `${(totalDist / entries.length).toFixed(1)} km` : '0 km';
+            document.getElementById('statDays').textContent = entries.length;
+
+            if (mapViewMode === 'single' && currentEntryData.elevationProfile) {
+                renderElevationChart(currentEntryData.elevationProfile);
+            } else {
+                document.getElementById('elevationCard').style.display = 'none';
+            }
+        }
+
+        /* --- AUSGABEN TRACKER --- */
+        function addExpense() {
+            const cat = document.getElementById('expCategory').value.trim();
+            const amt = parseFloat(document.getElementById('expAmount').value);
+            if (!cat || isNaN(amt)) return alert('Bitte Kategorie und Betrag eingeben.');
+            
+            if (!currentEntryData.expenses) currentEntryData.expenses = [];
+            currentEntryData.expenses.push({ category: cat, amount: amt });
+            document.getElementById('expCategory').value = '';
+            document.getElementById('expAmount').value = '';
+            renderExpenses();
+            triggerAutoSave();
+        }
+
+        function removeExpense(idx) {
+            currentEntryData.expenses.splice(idx, 1);
+            renderExpenses();
+            triggerAutoSave();
+        }
+
+        function renderExpenses() {
+            const container = document.getElementById('expenseListContainer');
+            if (!currentEntryData.expenses || currentEntryData.expenses.length === 0) {
+                container.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted)">Keine Ausgaben für diese Etappe eingetragen.</p>';
+                return;
+            }
+            let html = '<table class="expense-table"><thead><tr><th>Kategorie</th><th>Betrag (€)</th><th></th></tr></thead><tbody>';
+            let sum = 0;
+            currentEntryData.expenses.forEach((item, idx) => {
+                sum += item.amount;
+                html += `<tr><td>${escapeHTML(item.category)}</td><td>${item.amount.toFixed(2)} €</td><td><button class="btn-delete-poi" onclick="removeExpense(${idx})">✕</button></td></tr>`;
+            });
+            html += `</tbody><tfoot><tr><th>Gesamt</th><th>${sum.toFixed(2)} €</th><th></th></tr></tfoot></table>`;
+            container.innerHTML = html;
+        }
+
+        async function renderTripBudgetSummary() {
+            const container = document.getElementById('tripBudgetSummary');
+            const entries = (await diaryStore.getItem('travelDiary_Pro') || []).filter(e => e.tripId === activeTripId);
+            let categories = {};
+            let total = 0;
+
+            entries.forEach(e => {
+                if (e.expenses) {
+                    e.expenses.forEach(exp => {
+                        categories[exp.category] = (categories[exp.category] || 0) + exp.amount;
+                        total += exp.amount;
+                    });
+                }
+            });
+
+            if (total === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted); font-size:0.9rem">Noch keine Ausgaben erfasst.</p>';
+                return;
+            }
+
+            let html = `<div style="background:#f1f5f9; padding:1rem; border-radius:8px;">
+                <h4 style="margin:0 0 0.5rem 0;">Gesamtausgaben Reise: <span style="color:var(--accent);">${total.toFixed(2)} €</span></h4>
+                <ul style="margin:0; padding-left:1.2rem; font-size:0.9rem;">`;
+            for (let [cat, amt] of Object.entries(categories)) {
+                html += `<li>${escapeHTML(cat)}: <strong>${amt.toFixed(2)} €</strong></li>`;
+            }
+            html += '</ul></div>';
+            container.innerHTML = html;
+        }
+
+        /* --- PACKLISTEN MANAGER --- */
+        const CHECKLIST_PRESETS = {
+            bike: ["Fahrradhelm", "Fahrradschloss", "Multitool & Flickzeug", "Ersatzschlauch", "Luftpumpe", "Radtrikots / Hosen", "Trinkflaschen", "Regenbekleidung", "Satteltaschen"],
+            hiking: ["Wanderschuhe", "Trekkingstöcke", "Rucksack mit Regenhülle", "Funktionswäsche", "Erste-Hilfe-Set", "Trinkblase / Flasche", "Taschenmesser", "Sonnencreme & Cappy"],
+            camping: ["Zelt & Heringe", "Isomatte", "Schlafsack", "Gaskocher & Geschirr", "Stirnlampe", "Powerbank", "Camping-Messer", "Mikrofaser-Handtuch"]
+        };
+
+        async function getChecklist() {
+            return (await diaryStore.getItem(`travelDiary_Checklist_${activeTripId}`)) || [];
+        }
+
+        async function saveChecklist(list) {
+            await diaryStore.setItem(`travelDiary_Checklist_${activeTripId}`, list);
+            renderChecklist();
+        }
+
+        async function loadChecklistPreset(presetKey) {
+            if (!CHECKLIST_PRESETS[presetKey]) return;
+            let list = await getChecklist();
+            CHECKLIST_PRESETS[presetKey].forEach(item => {
+                if (!list.some(i => i.text === item)) list.push({ text: item, done: false });
+            });
+            await saveChecklist(list);
+        }
+
+        async function addChecklistItem() {
+            const input = document.getElementById('newChecklistItem');
+            const val = input.value.trim();
+            if (!val) return;
+            let list = await getChecklist();
+            list.push({ text: val, done: false });
+            input.value = '';
+            await saveChecklist(list);
+        }
+
+        async function toggleChecklistItem(idx) {
+            let list = await getChecklist();
+            if (list[idx]) list[idx].done = !list[idx].done;
+            await saveChecklist(list);
+        }
+
+        async function removeChecklistItem(idx) {
+            let list = await getChecklist();
+            list.splice(idx, 1);
+            await saveChecklist(list);
+        }
+
+        async function renderChecklist() {
+            const container = document.getElementById('checklistContainer');
+            let list = await getChecklist();
+            if (list.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem">Packliste ist noch leer. Lade eine Vorlage oder füge Gegenstände hinzu.</p>';
+                return;
+            }
+            let html = '<div class="checklist-group">';
+            list.forEach((item, idx) => {
+                html += `<div class="checklist-item ${item.done ? 'done' : ''}">
+                    <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistItem(${idx})">
+                    <span style="flex:1;">${escapeHTML(item.text)}</span>
+                    <button class="btn-delete-poi" onclick="removeChecklistItem(${idx})">✕</button>
+                </div>`;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        /* --- FOTO HANDLING & EXIF --- */
+        async function renderImagesUI() {
+            const grid = document.getElementById('imageGrid'); grid.innerHTML = ''; 
+            if (!currentEntryData.images) return;
+            for (let index = 0; index < currentEntryData.images.length; index++) {
+                const img = currentEntryData.images[index];
+                const src = await resolveImageSrc(img);
+                const card = document.createElement('div'); card.className = 'image-card';
+                const badge = img.lat ? `<span class="image-badge">📍 GPS</span>` : '';
+                card.innerHTML = `<img src="${src}" class="${img.featured ? 'featured-photo' : ''}" title="${escapeHTML(img.filename || 'Foto')}">${badge}
+                    <div class="photo-actions"><button type="button" onclick="setFeaturedPhoto(${index})" title="Titelbild">★</button><button type="button" onclick="movePhoto(${index}, -1)">←</button><button type="button" onclick="movePhoto(${index}, 1)">→</button><button type="button" onclick="removeImage(${index})">×</button></div>
+                    <input class="photo-caption" value="${escapeHTML(img.caption || '')}" placeholder="Bildunterschrift" oninput="setPhotoCaption(${index}, this.value)">`;
+                grid.appendChild(card);
+            }
+        }
+
+        function setPhotoCaption(index, caption) { currentEntryData.images[index].caption = caption; triggerAutoSave(); }
+        function setFeaturedPhoto(index) {
+            currentEntryData.images.forEach((image, imageIndex) => image.featured = imageIndex === index);
+            renderImagesUI(); triggerAutoSave();
+        }
+        function movePhoto(index, direction) {
+            const target = index + direction; if (target < 0 || target >= currentEntryData.images.length) return;
+            [currentEntryData.images[index], currentEntryData.images[target]] = [currentEntryData.images[target], currentEntryData.images[index]];
+            renderImagesUI(); triggerAutoSave();
+        }
+
+        async function removeImage(index) { 
+            if(confirm("Bild entfernen?")) {
+                const img = currentEntryData.images[index];
+                currentEntryData.images.splice(index, 1); 
+                // Verwaistes Bild auch aus dem separaten Bild-Speicher löschen (nicht nur die Referenz)
+                if (img && img.id) { try { await diaryStore.removeItem(imageStoreKey(img.id)); imageSrcCache.delete(img.id); } catch(e) {} }
+                await renderImagesUI(); 
+                await populateFormFromData(currentEntryData);
+                await triggerAutoSave(); 
+            }
+        }
+        
+        function convertDMSToDD(dms, ref) {
+            if (!dms) return null;
+            let dd = dms[0].valueOf() + dms[1].valueOf()/60 + dms[2].valueOf()/3600;
+            if (ref === "S" || ref === "W") dd = dd * -1;
+            return dd;
+        }
+
+        async function handleImageSelection(event) {
+            syncInputsToData();
+            const files = Array.from(event.target.files);
+            if (!currentEntryData.images) currentEntryData.images = [];
+            const MAX_WIDTH = appSettings.maxPhotoWidth || 1000;
+            
+            for (let file of files) {
+                let lat = null, lng = null, dateTaken = null;
+
+                await new Promise(resolve => {
+                    if (!window.EXIF) { resolve(); return; }
+                    EXIF.getData(file, function() {
+                        const exLat = EXIF.getTag(this, "GPSLatitude");
+                        const exLatRef = EXIF.getTag(this, "GPSLatitudeRef");
+                        const exLon = EXIF.getTag(this, "GPSLongitude");
+                        const exLonRef = EXIF.getTag(this, "GPSLongitudeRef");
+                        const exDate = EXIF.getTag(this, "DateTimeOriginal");
+
+                        if (exLat && exLatRef && exLon && exLonRef) {
+                            lat = convertDMSToDD(exLat, exLatRef);
+                            lng = convertDMSToDD(exLon, exLonRef);
+                        }
+                        if (exDate) {
+                            const parts = exDate.split(" ")[0].split(":");
+                            if (parts.length === 3) dateTaken = `${parts[0]}-${parts[1]}-${parts[2]}`;
+                        }
+                        resolve();
+                    });
+                });
+
+                if (dateTaken && (!document.getElementById('diaryDate').value || document.getElementById('diaryDate').value === new Date().toISOString().split('T')[0])) {
+                    document.getElementById('diaryDate').value = dateTaken;
+                    currentEntryData.date = dateTaken;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = async function() {
+                        const canvas = document.createElement('canvas');
+                        let scaleSize = MAX_WIDTH / img.width;
+                        if (scaleSize > 1) scaleSize = 1; 
+                        
+                        canvas.width = img.width * scaleSize;
+                        canvas.height = img.height * scaleSize;
+                        
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                        
+                        // Bild wird unter eigenem Key gespeichert (nicht mehr im Eintrag eingebettet),
+                        // damit das Speichern eines Eintrags nicht jedes Mal alle Fotos neu schreibt.
+                        const imageId = await persistImageData(compressedDataUrl);
+                        currentEntryData.images.push({ id: imageId, filename: file.name, lat, lng });
+                        await renderImagesUI(); 
+                        await populateFormFromData(currentEntryData);
+                        await triggerAutoSave();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            event.target.value = ''; 
+        }
+
+        /* --- WETTER & POI API --- */
+        async function fetchWeatherData() {
+            syncInputsToData();
+            const date = document.getElementById('diaryDate').value;
+            if (!date) return alert("Bitte wähle zuerst ein Datum.");
+
+            let lat = null, lon = null;
+            if (currentEntryData.tracks && currentEntryData.tracks.length > 0 && currentEntryData.tracks[0].length > 0) {
+                lat = currentEntryData.tracks[0][0][0]; lon = currentEntryData.tracks[0][0][1];
+            } else if (currentEntryData.images) {
+                const imgWithGps = currentEntryData.images.find(i => i.lat && i.lng);
+                if (imgWithGps) { lat = imgWithGps.lat; lon = imgWithGps.lng; }
+            }
+
+            if (!lat || !lon) return alert("Keine GPS-Koordinaten in Route oder Fotos vorhanden.");
+
+            const statusEl = document.getElementById('weatherStatus');
+            const today = new Date().toISOString().split('T')[0];
+            const isFuture = date > today;
+            statusEl.innerText = isFuture ? "Frage Wettervorhersage ab..." : "Frage historische Wetterdaten ab...";
+
+            try {
+                // Für zukünftige Etappen die Vorhersage-API nutzen, für vergangene das Wetter-Archiv
+                const base = isFuture ? 'https://api.open-meteo.com/v1/forecast' : 'https://archive-api.open-meteo.com/v1/archive';
+                const url = `${base}?latitude=${lat.toFixed(4)}&longitude=${lon.toFixed(4)}&start_date=${date}&end_date=${date}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`;
+                const res = await fetch(url);
+                const data = await res.json();
+                
+                if (data.daily && data.daily.time.length > 0) {
+                    const maxT = data.daily.temperature_2m_max[0];
+                    const minT = data.daily.temperature_2m_min[0];
+                    const precip = data.daily.precipitation_sum[0];
+                    const code = data.daily.weather_code[0];
+                    
+                    currentEntryData.weather = { maxT, minT, precip, icon: getWeatherSymbol(code), forecast: isFuture };
+                    renderWeatherUI();
+                    statusEl.innerText = "";
+                    await triggerAutoSave();
+                } else { statusEl.innerText = isFuture ? "Keine Vorhersage verfügbar (nur ca. 16 Tage im Voraus möglich)." : "Keine Daten verfügbar."; }
+            } catch(err) { statusEl.innerText = "Fehler beim Laden."; }
+        }
+
+        function getWeatherSymbol(code) {
+            if (code === 0) return "☀️ Sonnig";
+            if (code >= 1 && code <= 3) return "⛅ Leicht bewölkt";
+            if (code >= 45 && code <= 48) return "🌫️ Nebel";
+            if (code >= 51 && code <= 67) return "🌧️ Regen";
+            if (code >= 71 && code <= 77) return "❄️ Schnee";
+            if (code >= 80 && code <= 82) return "🌦️ Schauer";
+            if (code >= 95) return "⛈️ Gewitter";
+            return "🌡️";
+        }
+
+        function renderWeatherUI() {
+            const display = document.getElementById('weatherDisplay');
+            if (currentEntryData.weather) {
+                const w = currentEntryData.weather;
+                const forecastBadge = w.forecast ? ' <span style="color:var(--accent); font-weight:700;">· Vorhersage</span>' : '';
+                display.innerHTML = `
+                    <div style="background:#f1f5f9; padding:0.6rem 0.8rem; border-radius:8px; margin-top:0.5rem; font-size:0.85rem; display:flex; justify-content:space-between; align-items:center;">
+                        <span><strong>${w.icon}</strong> | ${w.maxT}°C / ${w.minT}°C | 🌧️ ${w.precip} mm${forecastBadge}</span>
+                        <button class="btn-delete-poi" onclick="removeWeather()">✕</button>
+                    </div>`;
+            } else { display.innerHTML = ''; }
+        }
+
+        function removeWeather() { delete currentEntryData.weather; renderWeatherUI(); triggerAutoSave(); }
+
+        /* Douglas-Peucker-Vereinfachung: reduziert sehr feinaufgelöste Tracks
+           (mehrere tausend Punkte) auf eine für Karte & Speicher handlichere
+           Punktzahl, ohne die Streckenform sichtbar zu verändern. Die Höhe
+           (3. Element je Punkt) wird dabei an den verbleibenden Punkten
+           mitgeführt. */
+        function perpendicularDistance(point, lineStart, lineEnd) {
+            const [x1, y1] = lineStart, [x2, y2] = lineEnd, [x, y] = point;
+            const dx = x2 - x1, dy = y2 - y1;
+            if (dx === 0 && dy === 0) return Math.hypot(x - x1, y - y1);
+            const t = ((x - x1) * dx + (y - y1) * dy) / (dx * dx + dy * dy);
+            const projX = x1 + t * dx, projY = y1 + t * dy;
+            return Math.hypot(x - projX, y - projY);
+        }
+
+        function simplifyTrack(points, epsilon) {
+            if (points.length < 3) return points;
+            let maxDist = 0, index = 0;
+            const end = points.length - 1;
+            for (let i = 1; i < end; i++) {
+                const dist = perpendicularDistance(points[i], points[0], points[end]);
+                if (dist > maxDist) { maxDist = dist; index = i; }
+            }
+            if (maxDist > epsilon) {
+                const left = simplifyTrack(points.slice(0, index + 1), epsilon);
+                const right = simplifyTrack(points.slice(index), epsilon);
+                return left.slice(0, -1).concat(right);
+            }
+            return [points[0], points[end]];
+        }
+
+        function haversine(lat1, lon1, lat2, lon2) {
+            const R = 6371; const dLat = (lat2 - lat1) * Math.PI / 180; const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        }
+
+        function parseGPX(gpxString) {
+            const parser = new DOMParser(); const xmlDoc = parser.parseFromString(gpxString, "text/xml");
+            const trkpts = xmlDoc.getElementsByTagName("trkpt"); if (trkpts.length === 0) return null;
+            let distance = 0, elevationGain = 0, maxEle = 0; let points = []; let profile = [];
+            let prevLat = null, prevLon = null, prevEle = null;
+
+            for (let i = 0; i < trkpts.length; i++) {
+                const lat = parseFloat(trkpts[i].getAttribute("lat")); const lon = parseFloat(trkpts[i].getAttribute("lon"));
+                const eleNode = trkpts[i].getElementsByTagName("ele")[0]; const ele = eleNode ? parseFloat(eleNode.textContent) : null;
+                
+                points.push({ lat, lon, ele });
+                if (ele !== null && ele > maxEle) maxEle = ele;
+                if (prevLat !== null && prevLon !== null) distance += haversine(prevLat, prevLon, lat, lon);
+                if (prevEle !== null && ele !== null && ele > prevEle) elevationGain += (ele - prevEle);
+                
+                if (ele !== null && (i % 5 === 0 || i === trkpts.length - 1)) {
+                    profile.push({ dist: parseFloat(distance.toFixed(1)), ele: Math.round(ele) });
+                }
+
+                prevLat = lat; prevLon = lon; prevEle = ele;
+            }
+            return { distance, elevation: elevationGain, maxEle, points, profile };
+        }
+
+        async function processMultipleGPX(event) {
+            syncInputsToData();
+            const files = event.target.files; if (files.length === 0) return;
+            document.getElementById('poiList').innerHTML = '';
+            document.getElementById('loadingSpinner').style.display = 'block'; 
+            
+            let totalDistance = 0, totalElevation = 0, maxEleOverall = 0;
+            let allTrackPoints = []; let fullProfile = [];
+            currentEntryData.gpxFilesData = []; currentEntryData.tracks = []; 
+
+            for (let i = 0; i < files.length; i++) {
+                const text = await files[i].text(); const gpxData = parseGPX(text);
+                if (gpxData) {
+                    totalDistance += gpxData.distance; totalElevation += gpxData.elevation;
+                    if (gpxData.maxEle > maxEleOverall) maxEleOverall = gpxData.maxEle;
+                    allTrackPoints = allTrackPoints.concat(gpxData.points);
+                    fullProfile = fullProfile.concat(gpxData.profile);
+
+                    currentEntryData.gpxFilesData.push({ filename: files[i].name, distance: gpxData.distance, elevation: gpxData.elevation });
+                    let latLngs = gpxData.points.map(p => [p.lat, p.lon, p.ele]);
+                    if (latLngs.length > 800) latLngs = simplifyTrack(latLngs, 0.00004);
+                    currentEntryData.tracks.push(latLngs); 
+                }
+            }
+            
+            currentEntryData.stats = { distance: parseFloat(totalDistance.toFixed(1)), elevation: parseInt(totalElevation.toFixed(0)), maxEle: parseInt(maxEleOverall) };
+            currentEntryData.elevationProfile = fullProfile;
+
+            renderElevationChart(fullProfile);
+            await fetchPOIsAlongTrack(allTrackPoints);
+            
+            document.getElementById('loadingSpinner').style.display = 'none';
+            renderPOIs(); renderMapData(); await triggerAutoSave(); event.target.value = '';
+        }
+
+        function renderElevationChart(profileData) {
+            const card = document.getElementById('elevationCard');
+            if (!profileData || profileData.length === 0) { card.style.display = 'none'; return; }
+            card.style.display = 'block';
+            if (!window.Chart) return;
+
+            const ctx = document.getElementById('elevationChart').getContext('2d');
+            if (elevationChart) elevationChart.destroy();
+
+            elevationChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: profileData.map(p => p.dist),
+                    datasets: [{
+                        label: 'Höhe (m)',
+                        data: profileData.map(p => p.ele),
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { title: { display: true, text: 'km' } },
+                        y: { title: { display: true, text: 'm' } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        async function queryWikipediaGeosearch(lang, pt, keywords) {
+            const url = `https://${lang}.wikipedia.org/w/api.php?action=query&generator=geosearch&ggscoord=${pt.lat}|${pt.lon}&ggsradius=2000&ggslimit=15&prop=extracts|pageimages&piprop=thumbnail&pithumbsize=300&exintro=1&explaintext=1&exchars=200&format=json&origin=*`;
+            try {
+                const response = await fetch(url); const data = await response.json();
+                const found = [];
+                if (data.query && data.query.pages) {
+                    Object.values(data.query.pages).forEach(page => {
+                        if (page.extract) {
+                            const textToSearch = (page.title + " " + page.extract).toLowerCase();
+                            if (keywords.some(k => textToSearch.includes(k))) {
+                                found.push({ id: `${lang}-${page.pageid}`, pageid: page.pageid, lang, title: page.title, extract: page.extract, thumbnail: page.thumbnail ? page.thumbnail.source : null });
+                            }
+                        }
+                    });
+                }
+                return found;
+            } catch (e) { return []; }
+        }
+
+        async function fetchPOIsAlongTrack(trackPoints) {
+            if (trackPoints.length === 0) return;
+            let searchPoints = [trackPoints[0]]; let accumulatedDist = 0;
+            for (let i = 1; i < trackPoints.length; i++) {
+                accumulatedDist += haversine(trackPoints[i-1].lat, trackPoints[i-1].lon, trackPoints[i].lat, trackPoints[i].lon);
+                if (accumulatedDist >= 10.0) { searchPoints.push(trackPoints[i]); accumulatedDist = 0; }
+            }
+            
+            let allPoisMap = new Map();
+            // In Fünfer-Gruppen parallel statt streng nacheinander abfragen -> spürbar schneller bei langen Routen
+            const BATCH_SIZE = 5;
+            for (let i = 0; i < searchPoints.length; i += BATCH_SIZE) {
+                const batch = searchPoints.slice(i, i + BATCH_SIZE);
+                const batchResults = await Promise.all(batch.map(async (pt) => {
+                    const deResults = await queryWikipediaGeosearch('de', pt, RELEVANT_KEYWORDS);
+                    if (deResults.length > 0) return deResults;
+                    // Fallback auf englische Wikipedia, wenn Deutsch nichts liefert (z.B. im nicht-deutschsprachigen Ausland)
+                    return await queryWikipediaGeosearch('en', pt, RELEVANT_KEYWORDS_EN);
+                }));
+                batchResults.flat().forEach(poi => { if (!allPoisMap.has(poi.id)) allPoisMap.set(poi.id, poi); });
+            }
+            currentEntryData.pois = Array.from(allPoisMap.values());
+        }
+
+        function renderPOIs() {
+            const container = document.getElementById('poiList'); container.innerHTML = '';
+            if (!currentEntryData.pois || currentEntryData.pois.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">Keine Highlights geladen.</p>'; return;
+            }
+            currentEntryData.pois.forEach((poi, index) => {
+                const div = document.createElement('div'); div.className = 'poi-item';
+                const imgTag = poi.thumbnail ? `<img src="${poi.thumbnail}" alt="${escapeHTML(poi.title)}" class="poi-img">` : `<div class="poi-img" style="display:flex; align-items:center; justify-content:center; font-size:1.5rem;">🏛️</div>`;
+                const langBadge = poi.lang === 'en' ? ' <span style="font-size:0.65rem; color:var(--text-muted); font-weight:700; border:1px solid var(--border); border-radius:4px; padding:0 4px;">EN</span>' : '';
+                div.innerHTML = `${imgTag}
+                    <div class="poi-content">
+                        <div class="poi-header-row">
+                            <h4>${escapeHTML(poi.title)}${langBadge}</h4>
+                            <button class="btn-delete-poi" onclick="removePOI(${index})" title="Entfernen">✕</button>
+                        </div>
+                        <p>${escapeHTML(poi.extract)}...</p>
+                        <a href="https://${poi.lang || 'de'}.wikipedia.org/?curid=${poi.pageid || poi.id}" target="_blank">Auf Wikipedia lesen ↗</a>
+                    </div>`;
+                container.appendChild(div);
+            });
+        }
+
+        function removePOI(index) { currentEntryData.pois.splice(index, 1); renderPOIs(); triggerAutoSave(); }
+
+        /* --- EXPORT FUNKTIONEN (FOTOBUCH PDF, KML, CSV, GPX, DOCX) --- */
+        async function getActiveTripEntries() {
+            return (await diaryStore.getItem('travelDiary_Pro') || []).filter(entry => entry.tripId === activeTripId).sort((a, b) => new Date(a.date) - new Date(b.date));
+        }
+
+        function formatDate(date) {
+            return date ? new Date(`${date}T12:00:00`).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' }) : 'Ohne Datum';
+        }
+
+        async function openPrintBook() {
+            const trip = trips.find(item => item.id === activeTripId); const entries = await getActiveTripEntries();
+            if (!trip || entries.length === 0) return alert('Für diese Reise gibt es noch keine Etappen.');
+            
+            const totalDistance = entries.reduce((sum, entry) => sum + Number(entry.stats?.distance || 0), 0);
+            const totalElevation = entries.reduce((sum, entry) => sum + Number(entry.stats?.elevation || 0), 0);
+            
+            const printWindow = window.open('', '_blank');
+            if (!printWindow) return alert('Bitte Pop-ups im Browser erlauben.');
+
+            let entryHtmlParts = [];
+            for (let idx = 0; idx < entries.length; idx++) {
+                const entry = entries[idx];
+                const photos = entry.images || [];
+                const layout = entry.photoLayout || 'grid-2';
+                
+                let photoGridHTML = '';
+                if (photos.length > 0) {
+                    const figures = [];
+                    for (const p of photos) {
+                        const src = await resolveImageSrc(p);
+                        figures.push(`
+                        <figure>
+                            <img src="${src}">
+                            ${p.caption ? `<figcaption>${escapeHTML(p.caption)}</figcaption>` : ''}
+                        </figure>`);
+                    }
+                    photoGridHTML = `<div class="photo-layout layout-${layout}">${figures.join('')}</div>`;
+                }
+
+                entryHtmlParts.push(`
+                <article class="entry-page">
+                    <div class="day-badge">Tag ${idx + 1} · ${formatDate(entry.date)}</div>
+                    <h2>${escapeHTML(entry.title || 'Etappe')}</h2>
+                    <div class="facts-bar">
+                        <span>📍 ${escapeHTML(entry.start || '--')} ➔ ${escapeHTML(entry.destination || '--')}</span>
+                        <span>🚴 ${Number(entry.stats?.distance || 0).toFixed(1)} km</span>
+                        <span>⛰️ ${Math.round(entry.stats?.elevation || 0)} HM</span>
+                        ${entry.rating ? `<span>★ ${entry.rating}/5</span>` : ''}
+                    </div>
+                    ${entry.highlights ? `<p class="highlights-box"><strong>Highlights:</strong> ${escapeHTML(entry.highlights)}</p>` : ''}
+                    <div class="story-text">${escapeHTML(entry.text || '')}</div>
+                    ${photoGridHTML}
+                </article>`);
+            }
+            let entriesHTML = entryHtmlParts.join('');
+
+            printWindow.document.write(`
+            <!doctype html>
+            <html lang="de">
+            <head>
+                <meta charset="utf-8">
+                <title>${escapeHTML(trip.title)} – Fotobuch</title>
+                <style>
+                    @page { size: A4 portrait; margin: 20mm 15mm 20mm 20mm; }
+                    @page :left { margin-left: 15mm; margin-right: 20mm; }
+                    @page :right { margin-left: 20mm; margin-right: 15mm; }
+                    body { font-family: "Georgia", serif; color: #1a1a1a; line-height: 1.6; font-size: 10pt; margin: 0; }
+                    .book-cover, .toc-page, .entry-page { break-before: page; page-break-before: always; }
+                    .book-cover { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+                    .book-cover h1 { font-size: 32pt; font-family: sans-serif; margin-bottom: 5px; }
+                    .book-cover .subtitle { font-size: 14pt; color: #555; font-style: italic; }
+                    .day-badge { font-family: sans-serif; color: #2563eb; font-weight: bold; font-size: 9pt; text-transform: uppercase; letter-spacing: 1px; }
+                    .facts-bar { display: flex; gap: 10px; font-family: sans-serif; font-size: 8.5pt; color: #475569; background: #f8fafc; padding: 6px 10px; border-radius: 4px; margin: 8px 0 14px 0; }
+                    .highlights-box { font-style: italic; background: #f1f5f9; padding: 8px 12px; border-left: 3px solid #2563eb; font-size: 9.5pt; }
+                    .story-text { white-space: pre-wrap; font-size: 10pt; margin-bottom: 15px; }
+                    figure { margin: 0; break-inside: avoid; }
+                    figure img { width: 100%; border-radius: 4px; object-fit: cover; }
+                    figcaption { font-size: 8pt; color: #666; font-style: italic; margin-top: 2px; font-family: sans-serif; }
+                    
+                    .photo-layout.layout-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+                    .photo-layout.layout-hero figure:first-child img { max-height: 120mm; }
+                    .photo-layout.layout-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+                    .photo-layout.layout-hero figure:first-child { grid-column: span 2; }
+                    .photo-layout.layout-panorama figure img { max-height: 90mm; }
+                    .photo-layout.layout-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4mm; page-break-before: always; }
+
+                    .no-print { position: fixed; top: 20px; right: 20px; background: #2563eb; color: white; padding: 10px 18px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: sans-serif; }
+                    @media print { .no-print { display: none; } }
+                </style>
+            </head>
+            <body>
+                <button class="no-print" onclick="window.print()">🖨️ Fotobuch Drucken / Als PDF speichern</button>
+                <div class="book-cover">
+                    <p style="font-family:sans-serif; text-transform:uppercase; letter-spacing:2px; color:#64748b;">Reisetagebuch</p>
+                    <h1>${escapeHTML(trip.title)}</h1>
+                    ${trip.subtitle ? `<div class="subtitle">${escapeHTML(trip.subtitle)}</div>` : ''}
+                    <p style="margin-top:30px; font-family:sans-serif; font-size:10pt;">${entries.length} Etappen · ${totalDistance.toFixed(1)} km · ${Math.round(totalElevation)} HM</p>
+                </div>
+                
+                <div class="toc-page">
+                    <h2 style="font-family:sans-serif;">Inhaltsverzeichnis</h2>
+                    <ol style="font-family:sans-serif; font-size:10pt; line-height:2;">
+                        ${entries.map((e, i) => `<li>Tag ${i+1}: ${escapeHTML(e.title || 'Etappe')} <span style="color:#64748b">(${formatDate(e.date)})</span></li>`).join('')}
+                    </ol>
+                </div>
+
+                ${entriesHTML}
+            </body>
+            </html>`);
+            printWindow.document.close();
+        }
+
+        async function exportTripKML() {
+            const trip = trips.find(item => item.id === activeTripId);
+            const entries = await getActiveTripEntries();
+            let placemarks = '';
+
+            entries.forEach((e, idx) => {
+                if (e.tracks && e.tracks.length > 0) {
+                    const coords = e.tracks.flat().map(pt => `${pt[1]},${pt[0]},${(pt[2] !== undefined && pt[2] !== null && !isNaN(pt[2])) ? pt[2] : 0}`).join(' ');
+                    placemarks += `
+                    <Placemark>
+                        <name>Tag ${idx+1}: ${escapeHTML(e.title || 'Etappe')}</name>
+                        <LineString>
+                            <tessellate>1</tessellate>
+                            <coordinates>${coords}</coordinates>
+                        </LineString>
+                    </Placemark>`;
+                }
+            });
+
+            const kmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+            <kml xmlns="http://www.opengis.net/kml/2.2">
+                <Document>
+                    <name>${escapeHTML(trip?.title || 'Reise')}</name>
+                    ${placemarks}
+                </Document>
+            </kml>`;
+
+            downloadFile(kmlContent, `${(trip?.title || 'Reise').replace(/[^a-z0-9]/gi, '_')}.kml`, 'application/vnd.google-earth.kml+xml');
+        }
+
+        function csvValue(v) { return `"${String(v ?? '').replaceAll('"', '""')}"`; }
+        async function exportTripCSV() {
+            const entries = await getActiveTripEntries(); const trip = trips.find(item => item.id === activeTripId);
+            if (!entries.length) return alert('Keine Etappen vorhanden.');
+            const header = ['Datum', 'Titel', 'Start', 'Ziel', 'Kilometer', 'Höhenmeter', 'Bewertung', 'Highlights'];
+            const rows = entries.map(e => [e.date, e.title, e.start, e.destination, e.stats?.distance || 0, e.stats?.elevation || 0, e.rating || 0, e.highlights].map(csvValue).join(';'));
+            downloadFile('\ufeff' + [header.map(csvValue).join(';'), ...rows].join('\n'), `${(trip?.title || 'Reise').replace(/[^a-z0-9]/gi, '_')}_Etappen.csv`, 'text/csv;charset=utf-8');
+        }
+
+        async function exportTripGPX() {
+            const entries = await getActiveTripEntries(); const trip = trips.find(item => item.id === activeTripId);
+            const tracks = entries.flatMap(entry => (entry.tracks || []).map((track, index) => ({ name: `${entry.date || ''} ${entry.title || 'Etappe'} ${index + 1}`, points: track })));
+            if (!tracks.length) return alert('Keine GPX-Routen vorhanden.');
+            const body = tracks.map(track => `<trk><name>${escapeHTML(track.name)}</name><trkseg>${track.points.map(point => {
+                const ele = point[2];
+                const eleTag = (ele !== undefined && ele !== null && !isNaN(ele)) ? `<ele>${Number(ele).toFixed(1)}</ele>` : '';
+                return `<trkpt lat="${Number(point[0]).toFixed(6)}" lon="${Number(point[1]).toFixed(6)}">${eleTag}</trkpt>`;
+            }).join('')}</trkseg></trk>`).join('');
+            downloadFile(`<?xml version="1.0" encoding="UTF-8"?><gpx version="1.1" creator="Reisetagebuch" xmlns="http://www.topografix.com/GPX/1/1"><metadata><name>${escapeHTML(trip?.title || 'Reise')}</name></metadata>${body}</gpx>`, `${(trip?.title || 'Reise').replace(/[^a-z0-9]/gi, '_')}_Routen.gpx`, 'application/gpx+xml');
+        }
+
+        async function exportTripDOCX() {
+            const trip = trips.find(item => item.id === activeTripId); const entries = await getActiveTripEntries();
+            if (!trip || !entries.length) return alert('Keine Etappen vorhanden.');
+            let docContent = `<h1>${escapeHTML(trip.title)}</h1><p>${escapeHTML(trip.subtitle || '')}</p><hr>`;
+            entries.forEach((e, idx) => {
+                docContent += `<h2>Tag ${idx+1}: ${escapeHTML(e.title || 'Etappe')}</h2>
+                <p><strong>Datum:</strong> ${formatDate(e.date)} | <strong>Distanz:</strong> ${e.stats?.distance || 0} km | <strong>Höhenmeter:</strong> ${e.stats?.elevation || 0} m</p>
+                <p>${escapeHTML(e.text || '')}</p><br>`;
+            });
+            downloadFile(`<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>${docContent}</body></html>`, `${trip.title.replace(/[^a-z0-9]/gi, '_')}.doc`, 'application/msword');
+        }
+
+        function downloadFile(content, filename, contentType) {
+            const blob = new Blob([content], { type: contentType }); const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = filename;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+
+        async function exportAllEntriesJSON() {
+            const entries = await diaryStore.getItem('travelDiary_Pro') || [];
+            if (entries.length === 0) return alert("Das Logbuch ist leer.");
+
+            // Bild-Blobs einsammeln, damit sie im Backup enthalten sind (sie liegen
+            // seit dem Performance-Umbau nicht mehr direkt im Eintrag).
+            const imagesMap = {};
+            for (const entry of entries) {
+                if (entry.images) {
+                    for (const img of entry.images) {
+                        if (img.id && !img.dataUrl && !imagesMap[img.id]) {
+                            const data = await diaryStore.getItem(imageStoreKey(img.id));
+                            if (data) imagesMap[img.id] = data;
+                        }
+                    }
+                }
+            }
+
+            const backup = { version: 4, exportedAt: new Date().toISOString(), trips, entries, images: imagesMap, settings: appSettings };
+            const filename = `Reisetagebuch_Backup_${new Date().toISOString().split('T')[0]}.json`;
+            const jsonStr = JSON.stringify(backup, null, 2);
+
+            let completed = false;
+            if (navigator.share && navigator.canShare) {
+                try {
+                    const file = new File([jsonStr], filename, { type: 'application/json' });
+                    if (navigator.canShare({ files: [file] })) {
+                        await navigator.share({ files: [file], title: 'Reisetagebuch Backup', text: 'Backup meines Reisetagebuchs' });
+                        completed = true;
+                    }
+                } catch (err) {
+                    if (err && err.name === 'AbortError') return; // Nutzer hat das Teilen-Menü selbst abgebrochen
+                }
+            }
+            if (!completed) downloadFile(jsonStr, filename, "application/json");
+
+            try { localStorage.setItem('travelDiary_LastBackup', new Date().toISOString()); updateBackupStatus(); } catch (e) {}
+        }
+
+        async function importDiaryJSON(event) {
+            const file = event.target.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    let currentEntries = await diaryStore.getItem('travelDiary_Pro') || [];
+                    const newEntries = Array.isArray(imported) ? imported : (imported.entries || []);
+                    const importedTrips = Array.isArray(imported.trips) ? imported.trips : [];
+                    const importedImages = imported.images || {};
+
+                    // Bild-Blobs aus dem Backup in den Bild-Speicher zurückschreiben
+                    for (const [id, dataUrl] of Object.entries(importedImages)) {
+                        await diaryStore.setItem(imageStoreKey(id), dataUrl);
+                        imageSrcCache.set(id, dataUrl);
+                    }
+                    
+                    const map = new Map(currentEntries.map(item => [item.id, item]));
+                    newEntries.forEach(item => map.set(item.id, item));
+                    
+                    await diaryStore.setItem('travelDiary_Pro', Array.from(map.values()));
+                    if (importedTrips.length) {
+                        const tripMap = new Map(trips.map(t => [t.id, t])); importedTrips.forEach(t => tripMap.set(t.id, t));
+                        trips = Array.from(tripMap.values()); await diaryStore.setItem('travelDiary_Trips', trips);
+                    }
+                    await initializeTrips(); await renderTripUI(); await renderDiaryHistory();
+                    alert(`Import erfolgreich (${newEntries.length} Etappen importiert).`);
+                } catch (err) { alert('Fehler beim Importieren.'); }
+                event.target.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        function updateBackupStatus() {
+            const status = document.getElementById('backupStatus');
+            const timestamp = localStorage.getItem('travelDiary_LastBackup');
+            if (status) status.textContent = timestamp ? `Letzte Sicherung: ${new Date(timestamp).toLocaleString('de-DE')}` : 'Keine Sicherung erstellt.';
+            updateBackupBanner(timestamp);
+        }
+
+        async function updateBackupBanner(timestampArg) {
+            const banner = document.getElementById('backupBanner');
+            const text = document.getElementById('backupBannerText');
+            if (!banner || !text) return;
+            const entries = await diaryStore.getItem('travelDiary_Pro') || [];
+            if (entries.length === 0) { banner.style.display = 'none'; return; }
+
+            const timestamp = timestampArg !== undefined ? timestampArg : localStorage.getItem('travelDiary_LastBackup');
+            const daysSince = timestamp ? (Date.now() - new Date(timestamp).getTime()) / 86400000 : Infinity;
+            if (daysSince > 14) {
+                text.textContent = timestamp
+                    ? `⚠️ Letzte Sicherung ist ${Math.floor(daysSince)} Tage her. Zeit für ein Backup!`
+                    : '⚠️ Noch kein Backup erstellt – deine Einträge liegen bisher nur in diesem Browser.';
+                banner.style.display = 'flex';
+            } else {
+                banner.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
